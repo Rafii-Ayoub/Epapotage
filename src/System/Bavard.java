@@ -3,12 +3,17 @@ import java.util.List;
 import java.util.Random;
 import src.GUIs.*;
 
-public class Bavard implements PapotageListener {
-		public String login;
-		public String password;
-		public Messagerie mess;
-		public String ok;
-	
+
+public abstract  class Bavard implements PapotageListener,OnLineListener, OffLineListener {
+		private String login;
+		private String password;
+		private Messagerie mess;
+		private String ok;
+		protected boolean capteur = false;
+	    protected OnLineEvent connectionEvent;
+	    protected OffLineEvent logOutEvent;
+        private Concierge concierge; 
+	    private ArrayList<Bavard> listeners = new ArrayList<>();
 		
 		
 		// Constructors
@@ -93,6 +98,67 @@ public class Bavard implements PapotageListener {
 		public void setPassword(String password) {
 			this.password = password;
 		}
+		
+		public Concierge getConcierge() {
+			return this.concierge;
+		}
+		
+		// Handle LogIn and LogOut 
+		
+		public boolean identical(Bavard bavard){
+		    if (bavard.getLogin() == this.getLogin()){
+		      return true;
+		    }
+		    else {
+		      return false;
+		    }
+		  }
+		 @Override
+	
+		 public void notifyMe(){
+			    for (Bavard b: this.getConcierge().getListBavardConnected()){
+			      if (listeners.contains(b)){
+			        // do nothing
+			      }
+
+			      else{
+			        notificateConnection(b);
+			        listeners.add(b);
+			      }
+			    }
+			  }
+		 public OffLineEvent getLogOutEvent(){
+		    return this.logOutEvent;
+		  }
+
+		  @Override
+		  public void setLogOutEvent(){
+		    this.logOutEvent = new OffLineEvent(this);
+		  }
+
+		  public void deleteFromList(Bavard b){
+		    for (int i = 0; i < this.listeners.size(); i++){
+		      if (b.identical(this.listeners.get(i))){
+		        this.listeners.remove(i);
+		      }
+		    }
+		  }
+
+		  @Override
+		  /**
+		    * send the notification
+		    */
+		  public void logOutNotification(Bavard b){
+		    
+		    this.deleteFromList(b);
+		    if (this.identical(b)){
+		        // do nothing
+		      }
+		      else{
+		    	  //refresh the page
+		    	  
+		      }
+		  }
 		
 }
 		

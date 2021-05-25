@@ -1,3 +1,4 @@
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -6,14 +7,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
 import javax.swing.JPanel;
-
 import javax.swing.JTextField;
 
  
@@ -32,16 +30,16 @@ public class FenetreConnexion extends JFrame {
 	  private JLabel label = new JLabel("Veuillez vous connectez");
 	  private String text;
 	  private JTextField textField = new JTextField(20);
-	  private JTextField textField2 = new JTextField(20);
-	  private Concierge cons;
+	  private JTextField textField2 = new JTextField(20);  
+	  private Concierge concierge;
 	  
 	  
-	  public FenetreConnexion(Concierge cons){
+	  public FenetreConnexion(Concierge concierge){
 	    this.setTitle("La fenetre de connexion");
-	    this.setSize(300, 300);
+	    this.setSize(500, 300);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setLocationRelativeTo(null); 
-	    this.cons=cons;
+	    this.concierge =concierge;
 	    this.setResizable(false);
 
 	    
@@ -80,22 +78,24 @@ public class FenetreConnexion extends JFrame {
 	    
 	    
 	    
-	    Concierge cons1=this.cons;
+	    Concierge cons1=this.concierge;
 	    bouton2.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		boolean x=false;
 	    		String login = textField.getText();
-				String motpasse =textField2.getText();
-				System.out.print(login);
-				System.out.print(motpasse);
-				for (int i=0;i<cons1.getListeners().size();i++){
-				if (cons1.getListeners().get(i).toString().equals("["+login+"|"+motpasse+"]")){
+				String password =textField2.getText();
+				boolean authentification = cons1.authentification ( login,  password) ;
+				if (authentification== true) {
+					Bavard connected_bavard =  cons1.getBavardAuthentification(login,  password);
 					label.setText("Connexion Reussi ");
-					Messagerie m=new Messagerie(cons1.getListeners().get(i),cons1);
-					cons1.getListeners().get(i).setMess(m);
-					//pour eviter plusieurs meme utilisateurs
+					Messagerie m= new Messagerie (connected_bavard,cons1);
 					
-					for (int j=0;j<FenetreConnexion.onlineUsers.size();j++){
+					}
+				else {
+					label.setText("Connexion Echoué, login ou mp incorrect ");
+				}
+				
+				/*	for (int j=0;j<FenetreConnexion.onlineUsers.size();j++){
 						if (FenetreConnexion.onlineUsers.get(j)==cons1.getListeners().get(i).toString()){
 							x=true;
 						}
@@ -104,13 +104,15 @@ public class FenetreConnexion extends JFrame {
 						onlineUsers.add(cons1.getListeners().get(i).toString());
 						Messagerie.area2.setText(String.valueOf(FenetreConnexion.onlineUsers));
 					}
-				 }
+				 }*/
 				
 				}
-	    	}
+	    	
 	    	
 	    });
 	    
 	  }
 }
+	    
+
 	    

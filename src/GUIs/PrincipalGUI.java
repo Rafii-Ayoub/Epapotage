@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import javax.swing.JTextField;
+import src.System.*;
 
 public class PrincipalGUI extends JFrame implements ActionListener {
 	

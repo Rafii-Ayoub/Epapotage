@@ -8,4 +8,6 @@ public interface OffLineListener{
   public void setLogOutEvent();
 
   public void logOutNotification(Bavard b);
+  
+  public void notifyMe();
 }

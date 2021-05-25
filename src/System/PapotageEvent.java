@@ -1,4 +1,5 @@
 import java.util.EventObject;
+import src.GUIs.*;
 
 public class PapotageEvent extends EventObject{
 	private String sujet;

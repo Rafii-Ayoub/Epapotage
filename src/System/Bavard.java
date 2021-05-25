@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import src.GUIs.*;
 
 public class Bavard implements PapotageListener {
 		public String login;

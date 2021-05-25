@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import src.GUIs.*;
 
+
 public class Concierge {
 	
    // Declaration of attributes
@@ -12,7 +13,7 @@ public class Concierge {
    private static final AtomicInteger count1 = new AtomicInteger(1000); 
    private static final AtomicInteger count2 = new AtomicInteger(1000);
    public List<Bavard> listeners;
-   
+   protected ArrayList<Bavard> bavardConnected = new ArrayList<Bavard>();
    // Constructors
    
    /**
@@ -130,8 +131,48 @@ public class Concierge {
 	}
 	public void setPassword(int password) {
 		this.password = password;
+		
 	}
+	
+	 // Methods for handling Login and LogOut notification
+	
+	
+	  public void setConnectedList(Bavard bavard){
+		    /*
+		    * sets the list of connected person
+		    */
+		    this.bavardConnected.add(bavard);
+		    for (Bavard b : this.getListeners()){
+		      b.notifyMe();
+		    }
+		  }
+
+	  public void addNewBavardConnected(Bavard bavard){
+		    this.bavardConnected.add(bavard);
+		  }
+
+
+		  public ArrayList<Bavard> getListBavardConnected(){
+		    return bavardConnected;
+		  }
+		  public void deleteFromList(Bavard b){
+		    for (int i = 0; i < this.getListBavardConnected().size(); i++){
+		      if (this.getListBavardConnected().get(i) == b){
+		        this.getListBavardConnected().remove(i);
+		        b.turnCapteurOff();
+		      }
+		    }
+		  }
+
+		  // public PapotageSource getClass
+		  public void logOut(Bavard bavard){
+		    // remove the bavard from the list of connected baverd
+		    this.deleteFromList(bavard);
+		    // send the notification to each bavard in the group
+		    for (Bavard b : this.getListeners()){
+		        b.logOutNotification(bavard);
+		    }
+		  }
 
 	
-}
 }

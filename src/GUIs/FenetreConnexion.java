@@ -13,7 +13,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import src.System.*;
 
  
 
@@ -26,6 +25,7 @@ public class FenetreConnexion extends JFrame {
 	  public static ArrayList<String> onlineUsers=new ArrayList<String>();
 	  
 	  private JButton bouton2 = new JButton("cliquez pour vous connecter");
+	  public static String onlineUsers2 ="";
 	  
 	  private JPanel container = new JPanel();
 	  private JLabel label = new JLabel("Veuillez vous connectez");
@@ -90,23 +90,24 @@ public class FenetreConnexion extends JFrame {
 					Bavard connected_bavard =  cons1.getBavardAuthentification(login,  password);
 					label.setText("Connexion Reussi ");
 					Messagerie m= new Messagerie (connected_bavard,cons1);
-					
-					}
-				else {
-					label.setText("Connexion Echoué, login ou mp incorrect ");
-				}
-				
-				/*	for (int j=0;j<FenetreConnexion.onlineUsers.size();j++){
-						if (FenetreConnexion.onlineUsers.get(j)==cons1.getListeners().get(i).toString()){
+					for (int j=0;j<FenetreConnexion.onlineUsers.size();j++){
+						if (FenetreConnexion.onlineUsers.get(j)==connected_bavard.toString()){
 							x=true;
 						}
 					}
 					if (x==false) {
-						onlineUsers.add(cons1.getListeners().get(i).toString());
+						onlineUsers.add(connected_bavard.toString3());
+						String str =  connected_bavard.toString3();
+						onlineUsers2.concat(str);
+					
 						Messagerie.area2.setText(String.valueOf(FenetreConnexion.onlineUsers));
 					}
-				 }*/
+				}
+				else {
+					label.setText("Connexion Echoué, login ou mp incorrect ");
+				}
 				
+			
 				}
 	    	
 	    	
@@ -114,6 +115,4 @@ public class FenetreConnexion extends JFrame {
 	    
 	  }
 }
-	    
-
 	    

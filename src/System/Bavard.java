@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import src.System.Events.*;
+import src.System.Listeners.*;
 
 public   class Bavard implements PapotageListener,OnLineListener, OffLineListener {
 		private String login;

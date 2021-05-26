@@ -4,7 +4,17 @@ Une application style messagerie instantanée (en plus simple, bien sur) que nou
 
 ## Mode d'usage:
 
-Pour utiliser cette application il vous faut d'abord telecharger le fichier Epapotage.jar, puis en utilisant un IDE tel Eclipse importez le. 
-- En executant le programme vous trouvriez une première interface qui va vous demander de entrer un login et un mot de passe qui va servir à créer un bavard.
-- De preéference créez 2 bavards. Puis cliquez sur le bouton se connecter.
-- Connctez vous  de préference en utilisant 2 bavard. Vous allez voire 2 interfaces graphiques de messagerie inserer un message et un sujet. Vous allez visionner dans le texte area les messages envoyés.
+Pour utiliser cette application il vous faut : 
+
+   + Telecharger le fichier Epapotage.jar. Un JDK JAVA et une application pour executer les fichier JAR est necessaire.
+   + Telecharger le fichier zip. Importer le dans un IDE JAVA tel Eclipse. Et lancer le programme.
+   +  A l'aide de la commande: $ git clone https://github.com/Rafii-Ayoub/Epapotage.git (pas conseillé)
+
+En executant le programme:
+- Vous trouvriez une première interface qui va vous demander de créer un concierge. Il est preferable de le generer automatiquement.
+- Connecter vous (Concierge) en utilisant l'id et le mot de passe (attention saisir des Integers). Vous pouvez les trouver dans la console si vous utiliser un IDE.
+- Maintenant le Concierge est connecté, Creer des bavards de préference 2 ou plus. Utiliser pour cela le bouton generer automatiquement.
+- Puis cliquez sur le bouton Connecter un bavard. Vous pouvez voir dans la console tous les bavards avec leur login et mot de passe. Saisisez les et cliquer sur se connnecter.
+- Vous visionneriez des interfaces qui contient 4 TextArea. la plus grande c'est ou les messages s'affichent. les 2 premieres sont ou tu peux inserer le message et le sujet.
+
+

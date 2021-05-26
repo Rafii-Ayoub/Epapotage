@@ -6,16 +6,13 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import src.System.*;
 
 
 
@@ -25,20 +22,17 @@ public class Messagerie extends JFrame implements PapotageListener,ActionListene
 	private JPanel pan = new JPanel();
 	
 	private JButton bouton = new JButton("Envoyez le message aux utilisateurs connectes");
-	
-	
 	private JButton bouton1 = new JButton("Deconnexion");
 	
+	private JLabel label = new JLabel();
 	private JPanel container = new JPanel();
-	
-	private JLabel label = new JLabel("Bienvenue sur la fenetre de messagerie");
+
 	public  JLabel label4 = new JLabel("Label-UsersOffline");
 	
 	private String text;
-	
 	private JTextField textField = new JTextField(20);
-	private JTextArea textField2=new JTextArea();
 	
+	private JTextArea textField2=new JTextArea();
 	private JTextArea area=new JTextArea();
 	public static JTextArea area2=new JTextArea();
 	
@@ -47,20 +41,19 @@ public class Messagerie extends JFrame implements PapotageListener,ActionListene
 	
 	private Bavard A;
 	private Concierge cons;
-	public ArrayList<String> lesmess=new ArrayList<String>();
+	public ArrayList<String> lesmess = new ArrayList<String>();
 	
 	public Messagerie(Bavard B,Concierge cons){
 		this.A=B;
 		this.cons=cons;
 		
-		this.setTitle("vous etes connecte au nom de "+A.login);
+		this.setTitle("Bonjour "+A.getLogin());
 		this.setSize(350,700);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null); 
 		this.setResizable(false);
-		
-		
-		
+		label.setText("Bienvenu: " + B.getLogin());
+
 
 		container.setBackground(Color.white);
 		container.setLayout(new BorderLayout());
@@ -131,7 +124,7 @@ public class Messagerie extends JFrame implements PapotageListener,ActionListene
 	}
 
 	public String affichageabel() {
-		return (String.valueOf(A.login)+" is deconnected");
+		return (String.valueOf(A.getLogin())+" is deconnected");
 	}
 	
 	
@@ -145,15 +138,15 @@ public class Messagerie extends JFrame implements PapotageListener,ActionListene
 			String sujet = textField.getText();
 			String corps = textField2.getText();
 			
-			cons.EnvoiMessageAtoutleslistener(A.generEvent(sujet,corps));
+			cons.sendToAllListeners(A.generEvent(sujet,corps));
 			
 			
 			label.setText("le message a ete envoye");
 			}
-		if (component=="Deconnexion") {
+		else if (component=="Deconnexion") {
 			setVisible(false);
-			FenetreConnexion.onlineUsers.remove(A.login);
-			this.area2.setText(String.valueOf(FenetreConnexion.onlineUsers));
+			FenetreConnexion.onlineUsers.remove(A.getLogin());
+			this.area2.setText(String.valueOf(FenetreConnexion.onlineUsers2));
 			this.label4.setText(affichageabel());
 
 		}
@@ -165,14 +158,12 @@ public class Messagerie extends JFrame implements PapotageListener,ActionListene
 
 	@Override
 	public void ecouteMessage(PapotageEvent event) {
-		lesmess.add(A.login+" a envoye, Sujet: " + event.getSujet()+" Corps: " +event.getCorps()+"\n");
+		lesmess.add(" a envoye, Sujet: " + event.getSujet()+" Corps: " +event.getCorps()+"\n");
 		area.setText(String.valueOf(lesmess));
 	}
 	
 	
 }
-
-
 
 
 

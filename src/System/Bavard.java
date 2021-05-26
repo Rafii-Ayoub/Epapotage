@@ -1,10 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import src.GUIs.*;
 
-
-public abstract  class Bavard implements PapotageListener,OnLineListener, OffLineListener {
+public   class Bavard implements PapotageListener,OnLineListener, OffLineListener {
 		private String login;
 		private String password;
 		private Messagerie mess;
@@ -69,6 +67,10 @@ public abstract  class Bavard implements PapotageListener,OnLineListener, OffLin
 		
 		public String toString2() {
 			return "Bavard "+login+" est crée son mp: "+password ; 
+		}
+		
+		public String toString3() {
+			return login+"\n"; 
 		}
 		
 		public Messagerie getMess() {
@@ -162,6 +164,7 @@ public abstract  class Bavard implements PapotageListener,OnLineListener, OffLin
 		
 }
 		
+
 
 
 

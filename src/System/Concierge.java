@@ -172,3 +172,6 @@ public class Concierge {
 		        b.logOutNotification(bavard);
 		    }
 		  }
+
+	
+}

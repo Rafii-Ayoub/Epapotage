@@ -8,5 +8,4 @@ public interface OnLineListener {
 
   public void notificateConnection(Bavard bavard);
 
-  public void notifyMe();
 }

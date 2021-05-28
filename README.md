@@ -8,7 +8,7 @@ Pour utiliser cette application il vous faut :
 
    + Telecharger le fichier Epapotage.jar. Un JDK JAVA et une application pour executer les fichier JAR est necessaire.
    + Telecharger le fichier zip. Importer le dans un IDE JAVA tel Eclipse. Et lancer le programme.
-   +  A l'aide de la commande: $ git clone https://github.com/Rafii-Ayoub/Epapotage.git (pas conseillé)
+   +  A l'aide de la commande: $ git clone https://github.com/Rafii-Ayoub/Epapotage.git 
 
 En executant le programme:
 - Vous trouvriez une première interface qui va vous demander de créer un concierge. Il est preferable de le generer automatiquement.

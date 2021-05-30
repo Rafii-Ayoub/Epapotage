@@ -4,7 +4,7 @@ Une application style messagerie instantanée (en plus simple, bien sur) que nou
 
 ## Mode d'usage:
 
-Pour utiliser cette application il vous faut : 
+Pour utiliser cette application il vous faut soit : 
 
    + Telecharger le fichier Epapotage.jar. Un JDK JAVA et une application pour executer les fichier JAR est necessaire.
    + Telecharger le fichier zip. Importer le dans un IDE JAVA tel Eclipse. Et lancer le programme.

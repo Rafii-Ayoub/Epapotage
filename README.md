@@ -15,6 +15,6 @@ En executant le programme:
 - Connecter vous (Concierge) en utilisant l'id et le mot de passe (attention saisir des Integers). Vous pouvez les trouver dans la console si vous utiliser un IDE.
 - Maintenant le Concierge est connecté, Creer des bavards de préference 2 ou plus. Utiliser pour cela le bouton generer automatiquement.
 - Puis cliquez sur le bouton Connecter un bavard. Vous pouvez voir dans la console tous les bavards avec leur login et mot de passe. Saisisez les et cliquer sur se connnecter.
-- Vous visionneriez des interfaces qui contient 4 TextArea. la plus grande c'est ou les messages s'affichent. les 2 premieres sont ou tu peux inserer le message et le sujet.
+- Vous visionneriez des interfaces qui contient 4 TextArea. la plus grande c'est ou les messages s'affichent. les 2 premieres sont ou vous pouvez inserer le message et le sujet.
 
 
